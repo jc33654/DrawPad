@@ -1,0 +1,68 @@
+<meta charset='utf-8'>
+<link rel="stylesheet" href="colorPicker/colorPicker.css" type="text/css" />
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+<link rel="stylesheet" href="drawPad.css" type="text/css" />
+<script src='http://code.jquery.com/jquery-1.8.2.js'></script>
+<script src='drawPad_function.js'></script>
+<script src='colorPicker/jquery.colorPicker.js'></script>
+
+
+<div class='panel class-list4'>
+    <div class="canvasContant"></div>
+    <!-- <canvas id="canvas" width='770' height='480'></canvas> -->
+    <div class='tools displayFlex' id='tools'>
+        <div class="toolsColorAndWidth displayFlex">
+            <div class="toolsColor">
+                <div style='display:inline-block'><input type='text' id='color1' name='color1' value='#000000'></div>
+            </div>
+            <div class="toolsWidth displayFlex">
+                <p>Line Width:</p>
+                <input type="range" min="1" max="20" value="1" class="slider" id="linewidth">
+            </div>
+        </div>
+        <div class="toolsButton displayFlex">
+            <button id="freestyle" class="beChosen"><i class="fas fa-pencil-alt"></i></button>
+            <button id='straightLine'><i class="fas fa-slash"></i></button>
+            <button id='strokeRect'><i class="far fa-square"></i></button>
+            <button id='fillRect'><i class="fas fa-square"></i></button>
+            <button id='strokeCircle'><i class="far fa-circle"></i></button>
+            <button id='fillCircle'><i class="fas fa-circle"></i></button>
+            <button id='strokeEclipse'><i class="far fa-stop-circle"></i></button>
+            <button id='fillEclipse'><i class="fas fa-stop-circle"></i></button>
+            <button id='drawText'><i class="fas fa-font"></i></button>
+            <button id='eraser'><i class="fas fa-eraser"></i></button>
+            <button id='undo'><i class="fas fa-reply"></i></button>
+            <button id='redo'><i class="fas fa-share"></i></button>
+            <button id='clear'><i class="fas fa-trash-alt"></i></button>
+            <button id='save'><i class="far fa-save"></i></button>
+        </div>
+        <div class="toolsFont displayFlex">
+            <label for='fontface'>Font: </label><select id='fontface'>
+ 				<option value='sans-serif'>sans-serif</option>
+ 				<option value='serif'>serif</option>
+ 				<option value='cursive'>cursive</option>
+ 				<option value='fantasy'>fantasy</option>
+ 				<option value='monospace'>monospace</option>
+ 			</select>
+            <label>Size: </label><select id='fontsize'>
+ 				<option value='10px'>10px</option>
+ 				<option value='12px'>12px</option>
+ 				<option value='14px'>14px</option>
+ 				<option value='16px'>16px</option>
+ 				<option value='18px'>18px</option>
+ 				<option value='20px'>20px</option>
+ 				<option value='24px'>24px</option>
+ 			</select>
+            <label>Weight: </label><select id='fontweight'>
+ 				<option value='400'>default</option>
+ 				<option value='700'>bold</option>
+ 			</select>
+            <label>Style: </label><select id='fontstyle'>
+ 				<option value='normal'>normal</option>
+ 				<option value='italic'>italic</option>
+ 			</select>
+        </div>
+    </div>
+
+</div>
+<input type='text' id='keyin' size='20'>

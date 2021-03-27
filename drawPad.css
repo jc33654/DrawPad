@@ -1,0 +1,100 @@
+canvas {
+    border: solid 1px gray;
+}
+
+.class-list4 {
+    margin: 5px;
+    padding: 15px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 0px 5px #30313345;
+    /* width: 778px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+i {
+    font-size: 20px;
+    color: #616161;
+}
+
+.tools {
+    width: 100%;
+    margin: 15px 0px;
+    background: #d5d5d5;
+    border-radius: 10px;
+}
+
+label {
+    font-size: 10px;
+}
+
+span {
+    font-size: 9px;
+    color: red;
+    font-weight: bold;
+}
+
+.displayFlex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.toolsColorAndWidth {
+    padding: 10px 0px 10px 10px;
+}
+
+.toolsWidth {
+    align-items: center;
+    margin: 0px 10px;
+}
+
+.toolsWidth p {
+    margin: 0;
+}
+
+.toolsWidth .slider {
+    background: #d5d5d5;
+    width: 75px;
+    height: 5px;
+    cursor: pointer;
+}
+
+.toolsButton button {
+    background: transparent;
+    border: 0;
+    padding: 10px;
+}
+
+.toolsButton button:hover {
+    opacity: 0.5;
+}
+
+button.beChosen {
+    background: #616161;
+}
+
+button.beChosen i {
+    color: #d5d5d5;
+}
+
+.toolsFont {
+    display: none;
+    padding: 10px 0px;
+    margin: 0px 10px;
+    width: calc(100% - 20px);
+    border-top: 1px solid #616161;
+}
+
+#keyin {
+    border: none;
+    display: none;
+    position: absolute;
+    vertical-align: middle;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    line-height: 24px;
+}
