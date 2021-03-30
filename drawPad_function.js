@@ -9,7 +9,6 @@ $(document).ready(function() {
     var tool = $C(context);
     var lineWidthText;
     var isMobile = false;
-    // var drawImages = new Image();
 
 
 
@@ -74,8 +73,7 @@ $(document).ready(function() {
     //drawing dom event
     function drawingStart(e) {
         e.preventDefault();
-        // drawImages.src = context.canvas.toDataURL('image/png');
-        // console.log(drawImage);
+        drawImage.src = context.canvas.toDataURL('image/png');
         if (!drawing && tool.drawType === 'drawText') {
             e.stopPropagation();
             var offset = $('#canvasDiv').offset();
@@ -166,7 +164,6 @@ $(document).ready(function() {
             drawing = false;
         }
         if (drawing && tool.drawType !== 'drawText') {
-            // context.drawImage(drawImages, 0, 0, canvas.width, canvas.height);
             $(this).css('cursor', $(this).data('cursor'));
             tool.dropCanvas();
             var old = queue.shift();
@@ -188,7 +185,6 @@ $(document).ready(function() {
 
     function drawingLeave(e) {
         if (drawing && tool.drawType !== 'drawText') {
-            // context.drawImage(drawImages, 0, 0, canvas.width, canvas.height);
             $(this).css('cursor', $(this).data('cursor'));
             tool.dropCanvas();
             var old = queue.shift();
@@ -281,7 +277,6 @@ $(document).ready(function() {
             historyUrls = historyUrls.slice(-10, length);
         }
         historyUrlsIndex = historyUrls.length - 1;
-        // console.log(historyUrls);
     }
     // 儲存
     function saveUrl() {
@@ -291,6 +286,7 @@ $(document).ready(function() {
 
 
 // tool setting
+var drawImage = new Image();
 var historyUrls = [];
 var historyUrlsIndex = -1;
 var historyImage = new Image();
@@ -454,6 +450,8 @@ var freestyle = {
 var straightLine = {
     type: 'straightLine',
     run: function(x, y, x1, y1) {
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        this.ctx.drawImage(drawImage, 0, 0);
         this.ctx.beginPath();
         this.ctx.moveTo(x, y);
         this.ctx.lineTo(x1, y1);
@@ -464,6 +462,8 @@ var straightLine = {
 var strokeRect = {
     type: 'strokeRect',
     run: function(x, y, x1, y1) {
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        this.ctx.drawImage(drawImage, 0, 0);
         this.ctx.beginPath();
         this.ctx.rect(x, y, x1 - x, y1 - y);
         this.ctx.closePath();
@@ -473,6 +473,8 @@ var strokeRect = {
 var fillRect = {
     type: 'fillRect',
     run: function(x, y, x1, y1) {
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        this.ctx.drawImage(drawImage, 0, 0);
         this.ctx.beginPath();
         this.ctx.rect(x, y, x1 - x, y1 - y);
         this.ctx.closePath();
@@ -483,6 +485,8 @@ var strokeCircle = {
     type: 'strokeCircle',
     run: function(x1, y1, x2, y2) {
         var radius = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2), 2);
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        this.ctx.drawImage(drawImage, 0, 0);
         this.ctx.beginPath();
         this.ctx.arc(x1, y1, radius, 0, 2 * Math.PI, true);
         this.ctx.closePath();
@@ -493,6 +497,8 @@ var fillCircle = {
     type: 'fillCircle',
     run: function(x1, y1, x2, y2) {
         var radius = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2), 2);
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        this.ctx.drawImage(drawImage, 0, 0);
         this.ctx.beginPath();
         this.ctx.arc(x1, y1, radius, 0, 2 * Math.PI, true);
         this.ctx.closePath();
@@ -502,6 +508,8 @@ var fillCircle = {
 var strokeEclipse = {
     type: 'strokeEclipse',
     run: function(x1, y1, x2, y2) {
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        this.ctx.drawImage(drawImage, 0, 0);
         this.ctx.beginPath();
         var xc1 = x1,
             yc1 = y1 - Math.abs(y2 - y1),
@@ -523,6 +531,8 @@ var strokeEclipse = {
 var fillEclipse = {
     type: 'fillEclipse',
     run: function(x1, y1, x2, y2) {
+        this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+        this.ctx.drawImage(drawImage, 0, 0);
         this.ctx.beginPath();
         var xc1 = x1,
             yc1 = y1 - Math.abs(y2 - y1),
