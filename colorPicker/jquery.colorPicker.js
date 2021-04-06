@@ -102,6 +102,7 @@
             });
 
             // $('<div class="colorPicker_hexWrap" />').append(newHexLabel).appendTo(newPalette);
+            // $('<input class="colorPicker_hexWrap" type="color"/>').append(newHexLabel).appendTo(newPalette);
 
             // newPalette.find('.colorPicker_hexWrap').append(newHexField);
             // if (opts.showHexField === false) {

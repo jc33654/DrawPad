@@ -137,6 +137,7 @@ $(document).ready(function() {
                 tool.drawType == 'strokeEclipse' ||
                 tool.drawType == 'fillEclipse' ||
                 tool.drawType == 'straightLine' ||
+                tool.drawType == 'fillColor' ||
                 tool.drawType == 'clear' ||
                 tool.drawType == 'undo' ||
                 tool.drawType == 'redo') {
@@ -250,6 +251,9 @@ $(document).ready(function() {
     $('#straightLine').bind('click', function() {
         tool.drawType = 'straightLine';
     });
+    $('#fillColor').bind('click', function() {
+        tool.drawType = 'fillColor';
+    });
     $('#clear').bind('click', function() {
         tool.drawType = 'clear';
         tool.do(clear);
@@ -262,7 +266,9 @@ $(document).ready(function() {
     $('#redo').bind('click', function() {
         tool.drawType = 'redo';
         tool.do(redo);
-
+    });
+    $('#save').bind('click', function() {
+        saveUrl();
     });
 
 
@@ -280,7 +286,11 @@ $(document).ready(function() {
     }
     // 儲存
     function saveUrl() {
-        let dataUrl = canvas.toDataURL('image/png');
+        let dataUrl = canvas.toDataURL('image/jpeg');
+        var link = document.createElement('a');
+        link.href = dataUrl;
+        link.download = "";
+        link.click()
     }
 });
 
@@ -393,6 +403,7 @@ window['$C'] = function(ctx) {
     ret.regist(drawText);
     ret.regist(eraser);
     ret.regist(clear);
+    ret.regist(fillColor);
     ret.regist(undo);
     ret.regist(redo);
 
@@ -601,13 +612,11 @@ var redo = {
     run: function() {
         let length = historyUrls.length;
         let currentIndex = historyUrlsIndex + 1;
-        // console.log(currentIndex, historyUrlsIndex)
         if (currentIndex > length - 1) {
             historyUrlsIndex = length - 1;
             return;
         };
         historyUrlsIndex = currentIndex;
-        // console.log(historyImage.src);
         historyImage.src = historyUrls[currentIndex];
         historyImage.onload = () => {
             this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
@@ -621,6 +630,13 @@ var clear = {
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
     }
 }
+var fillColor = {
+    type: 'fillColor',
+    run: function() {
+        this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
+    }
+}
+
 
 
 
